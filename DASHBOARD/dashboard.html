@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Data Analytics Dashboard</title>
+    
+    <!-- Google Fonts for Aesthetic Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Background Theme */
+        body {
+            background-color: #121212; /* Dark Mode */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Dashboard Container */
+        .dashboard-container {
+            width: 95vw;  /* Full width */
+            height: 95vh; /* Full height */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #1e1e1e, #292929);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Tableau Dashboard */
+        .tableauContainer {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Loader Animation */
+        .loader {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid #00e676;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Hover Effect */
+        .dashboard-container:hover {
+            box-shadow: 0px 0px 30px rgba(0, 255, 128, 0.4);
+            transition: all 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Loader while Tableau loads -->
+        <div class="loader" id="loader"></div>
+
+        <div class="tableauContainer">
+            <div class="tableauPlaceholder" id="vizContainer">
+                <noscript>
+                    <a href="#"><img alt="Dashboard 1" src="https://public.tableau.com/static/images/Bo/Book2_17423208511630/Dashboard1/1.png" style="border: none;" /></a>
+                </noscript>
+                <object class="tableauViz" style="display:none;">
+                    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+                    <param name="embed_code_version" value="3" />
+                    <param name="site_root" value="" />
+                    <param name="name" value="Book2_17423208511630/Dashboard1" />
+                    <param name="tabs" value="no" />
+                    <param name="toolbar" value="yes" />
+                    <param name="static_image" value="https://public.tableau.com/static/images/Bo/Book2_17423208511630/Dashboard1/1.png" />
+                    <param name="animate_transition" value="yes" />
+                    <param name="display_static_image" value="yes" />
+                    <param name="display_spinner" value="yes" />
+                    <param name="display_overlay" value="yes" />
+                    <param name="display_count" value="yes" />
+                    <param name="language" value="en-US" />
+                    <param name="filter" value="publish=yes" />
+                </object>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var vizElement = document.getElementById("vizContainer").getElementsByTagName("object")[0];
+            var loader = document.getElementById("loader");
+
+            function resizeViz() {
+                let container = document.querySelector(".tableauContainer");
+                let newWidth = container.offsetWidth;
+                let newHeight = container.offsetHeight;
+
+                vizElement.style.width = newWidth + "px";
+                vizElement.style.height = newHeight + "px";
+            }
+
+            // Remove loader when Tableau is loaded
+            vizElement.onload = function () {
+                loader.style.display = "none";
+            };
+
+            resizeViz(); // Call on page load
+            window.addEventListener("resize", resizeViz); // Call on window resize
+
+            var scriptElement = document.createElement("script");
+            scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        });
+    </script>
+
+</body>
+</html>
