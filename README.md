@@ -1,4 +1,3 @@
-I've completely customized the README for you, replacing all mentions of the previous author with your name, **Uday Vimal**, and ensuring no links or references remain. Here's the final cleaned-up version:
 
 ---
 
@@ -168,5 +167,3 @@ I’m constantly learning and sharing knowledge, working on **end-to-end data en
 🚀 **Let’s explore data together!** Happy coding! 🎉  
 
 ---
-
-This version is now **fully personalized for you, Uday!** 🎯🚀 Let me know if you need any other modifications!
